@@ -1,0 +1,47 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Perm1",
+            "Effect": "Allow",
+            "Action": [
+                "polly:SynthesizeSpeech",
+                "s3:GetBucketLocation",
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "Perm2",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:PutItem",
+                "dynamodb:UpdateItem"
+
+            ],
+            "Resource": "arn:aws:dynamodb:REGION:ACCOUNT_ID:table/DYNAMODB_TABLE_NAME"
+        },
+        {
+            "Sid": "Perm3",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:GetBucketLocation"
+            ],
+            "Resource": "arn:aws:s3:::BUCKET_NAME/*"
+        },
+        {
+            "Sid": "Perm4",
+            "Effect": "Allow",
+            "Action": [
+                "sns:Publish"
+            ],
+            "Resource": "arn:aws:sns:REGION:ACCOUNT_ID:SNS_TOPIC_NAME"
+        }
+    ]
+}
